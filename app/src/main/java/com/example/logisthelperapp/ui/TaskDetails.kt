@@ -82,7 +82,7 @@ fun TaskDetailScreen(
                 modifier = modifier.padding(10.dp),
                 continueButtonTitle = stringResource(id = R.string.accept),
                 cancelButtonTitle = stringResource(id = R.string.refuse),
-                onContinueButtonClick = {  },
+                onContinueButtonClick = { isTaskAccepted = true },
                 onCancelButtonClick = { isShowRefuseDialog = true }
             )
         }
@@ -92,7 +92,6 @@ fun TaskDetailScreen(
         DeclineDialog(
             onDeclineClick = {
                 isShowRefuseDialog = false
-                isTaskAccepted = true
             },
             onCancelClick = { isShowRefuseDialog = false }
         )

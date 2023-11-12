@@ -1,6 +1,7 @@
 package com.example.logisthelperapp.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -127,7 +128,9 @@ fun TaskRouteSmallField(
             containerColor = BackgroundColor
         )
     ) {
-        Row() {
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             RouteGraph(routeSize = route.size, modifier = Modifier.padding(16.dp))
             Column {
                 RouteSmallItem(mapPoint = route[0])
@@ -168,7 +171,8 @@ fun RouteGraph(
 ){
     Column(
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
         Icon(painter = painterResource(id = R.drawable.ic_start_point), contentDescription = null)
         if (routeSize <= 2){

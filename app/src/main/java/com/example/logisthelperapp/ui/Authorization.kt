@@ -260,16 +260,13 @@ fun PhoneNumberField(
     )
 }
 
-const val passwordMask = "                         _ _ _ _ _ _"
+const val passwordMask = "_ _ _ _ _ _"
 
 fun passwordFilter(text: AnnotatedString): TransformedText {
     val trimmed =
         if (text.text.length >= 7) text.text.substring(0..6) else text.text
 
     val annotatedString = AnnotatedString.Builder().run {
-        if (trimmed.isNotEmpty()){
-            append("                         ")
-        }
 
         for (i in trimmed.indices) {
             append(trimmed[i])
