@@ -1,0 +1,74 @@
+package com.example.logisthelperapp.ui
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import com.example.logisthelperapp.R
+import com.example.logisthelperapp.ui.theme.AlmostBlack
+
+@Composable
+fun DeclineDialog(
+    modifier: Modifier = Modifier,
+    onDeclineClick: () -> Unit,
+    onCancelClick: () -> Unit
+){
+
+    Dialog(onDismissRequest = onCancelClick) {
+        Card(
+            modifier = modifier
+                .fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = Color.White)
+        ){
+            Column(
+                modifier = modifier
+                    .padding(24.dp)
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = stringResource(id = R.string.refuse_task_q),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    color = AlmostBlack
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    text = stringResource(id = R.string.refuse_task_correction),
+                    fontSize = 18.sp,
+                    color = AlmostBlack
+                )
+                Spacer(modifier = Modifier.height(28.dp))
+                TwoRowButtons(
+                    continueButtonTitle = stringResource(id = R.string.refuse),
+                    cancelButtonTitle = stringResource(id = R.string.no_),
+                    onContinueButtonClick = onDeclineClick,
+                    onCancelButtonClick = onCancelClick
+                )
+            }
+        }
+    }
+}
+
+@Preview(
+    showBackground = true
+)
+@Composable
+fun ShowDialog(){
+    DeclineDialog(onDeclineClick = {}) {
+        
+    }
+}
